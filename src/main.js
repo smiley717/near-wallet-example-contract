@@ -1,8 +1,13 @@
+import "regenerator-runtime/runtime";
+
+import * as nearlib from "nearlib"
+import getConfig from "./config"
+
+window.nearConfig = getConfig(process.env.NODE_ENV || "development");
+
 // Initializing contract
 async function initContract() {
-  console.log('nearConfig', nearConfig);
-
-  // Initializing connection to the NEAR DevNet.
+  // Initializing connection to the NEAR node.
   window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
@@ -13,7 +18,7 @@ async function initContract() {
   window.accountId = window.walletAccount.getAccountId();
 
   // Initializing our contract APIs by contract name and configuration.
-  window.contract = await near.loadContract(nearConfig.contractName, {
+  window.contract = await window.near.loadContract(nearConfig.contractName, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
     viewMethods: ['whoSaidHi'],
