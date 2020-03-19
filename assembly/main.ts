@@ -1,9 +1,10 @@
 // @nearfile
-import { context, storage, logging } from "near-runtime-ts";
+import { context, storage, logging } from "near-sdk-as";
+
 // --- contract code goes below
 
 // It's good to use common constant, but not required.
-const LAST_SENDER_KEY = "last_sender";
+import { LAST_SENDER_KEY } from "./model"
 
 // This is our change method. It modifies the state of the contract by
 // storing the account_id of the sender under the key "last_sender" on the blockchain

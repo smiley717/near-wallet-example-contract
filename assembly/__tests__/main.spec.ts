@@ -1,8 +1,6 @@
 import { sayHi, whoSaidHi } from "../main";
-import { VM } from "wasm-mock-vm";
-import { context, storage } from "near-runtime-ts";
-
-const LAST_SENDER_KEY = "last_sender";
+import { context, storage, VM } from "near-sdk-as";
+import { LAST_SENDER_KEY } from "../model";
 
 describe("contract", () => {
   it("should say Hi", () => {
