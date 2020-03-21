@@ -1,7 +1,6 @@
 Example of NEAR Wallet integration
 ==================================
 
-# Example of NEAR Wallet integration
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/near-examples/wallet-example)
 
 <!-- MAGIC COMMENT: DO NOT DELETE! Everything above this line is hidden on NEAR Examples page -->
