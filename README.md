@@ -1,7 +1,9 @@
-# Example of NEAR Wallet integration
+Example of NEAR Wallet integration
+==================================
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/nearprotocol/wallet-example)
 
-## Description
+<!-- MAGIC COMMENT: DO NOT DELETE! Everything above this line is hidden on NEAR Examples page -->
 
 This example demonstrates how to integrate your application with NEAR Wallet.
 The contract is quite simple. It can store the account_id of last sender and return it. It also shows how you can debug contracts using logs.
