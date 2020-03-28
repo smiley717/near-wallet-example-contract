@@ -29,11 +29,12 @@ yarn
 yarn dev
 ```
 
-If using Gitpod, a small dialog may appear showing options similar to this:
+Your command line which will display a link to localhost similar to:
+```bash
+Server running at http://localhost:1234
+```
 
-![Gitpod dialog that appears when website is served](assets/gitpod-port-1234.jpg)
-
-The "Preview" option will open the site in a tab within the IDE. Note that Gitpod may need a little time to spin up the website. It's possible this step might require reloading after a brief pause.
+Please open that link your browser to continue and see how to log in with NEAR Wallet in a simple webapp.
 
 ### Standard deploy option
 In this second option, the smart contract will get deployed to a specific account created with the NEAR Wallet.
