@@ -104,7 +104,7 @@ function updateWhoSaidHi() {
   });
 }
 
-// Loads nearAPIJs and this contract into window scope.
+// Loads nearAPI and this contract into window scope.
 window.nearInitPromise = initContract()
   .then(doWork)
   .catch(console.error);
