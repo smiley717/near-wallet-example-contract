@@ -1,6 +1,6 @@
 import "regenerator-runtime/runtime";
 
-import * as nearlib from "nearlib"
+import * as nearAPI from "near-api-js"
 import getConfig from "./config"
 
 window.nearConfig = getConfig(process.env.NODE_ENV || "development");
@@ -8,11 +8,11 @@ window.nearConfig = getConfig(process.env.NODE_ENV || "development");
 // Initializing contract
 async function initContract() {
   // Initializing connection to the NEAR node.
-  window.near = await nearlib.connect(Object.assign({ deps: { keyStore: new nearlib.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
+  window.near = await nearAPI.connect(Object.assign({ deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
   // is hosted at https://wallet.nearprotocol.com
-  window.walletAccount = new nearlib.WalletAccount(window.near);
+  window.walletAccount = new nearAPI.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
   window.accountId = window.walletAccount.getAccountId();
@@ -104,7 +104,7 @@ function updateWhoSaidHi() {
   });
 }
 
-// Loads nearlib and this contract into window scope.
+// Loads nearAPI and this contract into window scope.
 window.nearInitPromise = initContract()
   .then(doWork)
   .catch(console.error);
