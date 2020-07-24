@@ -10,7 +10,7 @@ async function initContract() {
   // Initializing connection to the NEAR node.
   window.near = await nearAPI.connect(Object.assign({ deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
-  // Initializing Wallet based Account. It can work with NEAR DevNet wallet that
+  // Initializing Wallet based Account. It can work with NEAR TestNet wallet that
   // is hosted at https://wallet.nearprotocol.com
   window.walletAccount = new nearAPI.WalletAccount(window.near);
 
