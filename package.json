@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "near-api-js": "^0.28.0",
-    "regenerator-runtime": "^0.13.6"
+    "regenerator-runtime": "^0.13.7"
   },
   "jest": {
     "testPathIgnorePatterns": [
