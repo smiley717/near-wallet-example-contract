@@ -16,6 +16,7 @@ neardev/shared-test/*
 # ignore any default network private keys and dev-account
 neardev/default/*
 neardev/dev-account
+dev-account.env
 
 # ignore dev .cache
 .cache/
