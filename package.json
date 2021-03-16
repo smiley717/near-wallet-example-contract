@@ -19,7 +19,7 @@
     "jest-environment-node": "^26.6.2",
     "near-sdk-as": "^3.0.0",
     "near-cli": "^1.5.4",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
     "near-api-js": "^0.38.0",
