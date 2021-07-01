@@ -20,7 +20,7 @@ There's a button at the top of this file that says "Open in Gitpod." This will o
 1. Install dependencies:
 
 ```
-yarn
+yarn --frozen-lockfile
 ```
 
 2. Build and deploy this smart contract to a development account. This development account will be created automatically and is not intended for reuse:
