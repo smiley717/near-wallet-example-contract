@@ -51,7 +51,7 @@ If needed, install `near-cli`:
 npm install near-cli -g
 ```
 
-2. If you do not have a NEAR account, please create one with [NEAR Wallet](https://wallet.nearprotocol.com).
+2. If you do not have a NEAR account, please create one with [NEAR Wallet](wallet.testnet.near.org).
 
 In the project root, login with `near-cli` by following the instructions after this command:
 
