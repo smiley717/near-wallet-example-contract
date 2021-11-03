@@ -15,14 +15,14 @@
     "dev": "yarn build && yarn dev:deploy:contract && parcel src/index.html"
   },
   "devDependencies": {
-    "jest": "^27.0.6",
-    "jest-environment-node": "^27.0.6",
+    "jest": "^27.3.1",
+    "jest-environment-node": "^27.3.1",
     "near-sdk-as": "3.2.3",
     "near-cli": "^2.1.1",
     "parcel-bundler": "^1.12.5"
   },
   "dependencies": {
-    "near-api-js": "^0.42.0",
+    "near-api-js": "^0.43.1",
     "regenerator-runtime": "^0.13.9"
   },
   "jest": {
