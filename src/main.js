@@ -11,7 +11,7 @@ async function initContract() {
   window.near = await nearAPI.connect(Object.assign({ deps: { keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore() } }, nearConfig));
 
   // Initializing Wallet based Account. It can work with NEAR TestNet wallet that
-  // is hosted at https://wallet.nearprotocol.com
+  // is hosted at https://wallet.testnet.near.org
   window.walletAccount = new nearAPI.WalletAccount(window.near);
 
   // Getting the Account ID. If unauthorized yet, it's just empty string.
@@ -95,7 +95,7 @@ function updateWhoSaidHi() {
 
     // only link to profile if there's a profile to link to
     if (who) {
-      el.href = 'https://explorer.nearprotocol.com/accounts/' + who;
+      el.href = 'https://explorer.testnet.near.org/accounts/' + who;
     }
 
     // change the ? to a !
