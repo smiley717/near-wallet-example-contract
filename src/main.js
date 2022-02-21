@@ -21,12 +21,13 @@ async function initContract() {
   window.contract = await window.near.loadContract(nearConfig.contractName, {
     // NOTE: This configuration only needed while NEAR is still in development
     // View methods are read only. They don't modify the state, but usually return some value.
-    viewMethods: ['whoSaidHi'],
+    viewMethods: ['whoSaidHi', 'balanceOf', 'totalSupply'],
     // Change methods can modify the state. But you don't receive the returned value when called.
-    changeMethods: ['sayHi'],
+    changeMethods: ['sayHi', 'transfer', 'init'],
     // Sender is the account ID to initialize transactions.
-    sender: window.accountId,
+    sender: window.accountId
   });
+  // await window.contract.init({initialOwner: walletAccount.getAccountId()});
 }
 
 // Using initialized contract
@@ -70,6 +71,11 @@ function signedInFlow() {
     window.contract.sayHi().then(updateWhoSaidHi);
   });
 
+  document.getElementById('send-token').addEventListener('click', () => {
+    // We call say Hi and then update who said Hi last.
+    window.contract.transfer({to: 'dev-davit.testnet', tokens: '50'}).then(updateWhoSaidHi);
+  });
+
   // Adding an event to a sing-out button.
   document.getElementById('sign-out').addEventListener('click', e => {
     e.preventDefault();
@@ -82,13 +88,16 @@ function signedInFlow() {
   // but wait a second so the question is legible
   setTimeout(updateWhoSaidHi, 1000);
 }
-
 // Function to update who said hi
 function updateWhoSaidHi() {
   // JavaScript tip:
   // This is another example of how to use promises. Since this function is not async,
   // we can't await for `contract.whoSaidHi()`, instead we attaching a callback function
   // usin `.then()`.
+  window.contract.balanceOf({tokenOwner: walletAccount.getAccountId()}).then(res => {
+    const el = document.getElementById('balance');
+    el.innerText = res || 0;
+  })
   contract.whoSaidHi().then((who) => {
     const el = document.getElementById('who');
     el.innerText = who || 'No one';

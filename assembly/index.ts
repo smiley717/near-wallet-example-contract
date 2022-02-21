@@ -1,7 +1,40 @@
 // @nearfile
-import { context, storage, logging } from "near-sdk-as";
+import { context, storage, logging, PersistentMap } from "near-sdk-as";
 
 // --- contract code goes below
+let balances = new PersistentMap<string, u64>("b:");
+let approves = new PersistentMap<string, u64>("a:");
+
+let TOTAL_SUPPLY: u64 = 1000000;
+
+export function totalSupply(): string {
+  return TOTAL_SUPPLY.toString();
+}
+
+export function init(initialOwner: string): void {
+  logging.log("initialOwner: " + initialOwner);
+  assert(storage.get<string>("init") == null, "Already initialized token supply");
+  balances.set(initialOwner, TOTAL_SUPPLY);
+  storage.set<string>("init", "done");
+}
+
+export function balanceOf(tokenOwner: string): u64 {
+  logging.log("balanceOf: " + tokenOwner);
+  if (!balances.contains(tokenOwner)) {
+    return 0;
+  }
+  let result = balances.getSome(tokenOwner);
+  return result;
+}
+
+export function transfer(to: string, tokens: u64): boolean {
+  logging.log("transfer from: " + context.sender + " to: " + to + " tokens: " + tokens.toString());
+  let fromAmount = balanceOf(context.sender);
+  assert(fromAmount >= tokens, "not enough tokens on account");
+  balances.set(context.sender, fromAmount - tokens);
+  balances.set(to, balanceOf(to) + tokens);
+  return true;
+}
 
 // It's good to use common constant, but not required.
 import { LAST_SENDER_KEY } from "./model"
